@@ -1,0 +1,35 @@
+[
+  {
+    "carId": 1,
+    "name": "Ford Escape",
+    "type": "SUV",
+    "rating": 4.8,
+    "fuel": "Bensin",
+    "image": "https://media.ed.edmunds-media.com/ford/escape/2023/oem/2023_ford_escape_4dr-suv_plug-in-hybrid_fq_oem_1_1280.jpg",
+    "hourRate": 40000,
+    "dayRate": 200000,
+    "monthRate": 5000000
+  },
+  {
+    "carId": 2,
+    "name": "Ford Mustang",
+    "type": "Sport",
+    "rating": 4.8,
+    "fuel": "Bensin",
+    "image": "https://hips.hearstapps.com/hmg-prod/images/2022-ford-mustang-shelby-gt500-02-1636734552.jpg?crop=0.845xw:1.00xh;0.0657xw,0&resize=640:*",
+    "hourRate": 120000,
+    "dayRate": 2200000,
+    "monthRate": 15000000
+  },
+  {
+    "carId": 3,
+    "name": "Toyota Avanza",
+    "type": "MPV",
+    "rating": 4.9,
+    "fuel": "Bensin",
+    "image": "https://res.cloudinary.com/mufautoshow/image/upload/f_auto,f_auto/w_1200/v1639025826/moas/news/1639025819_review-toyota-all-new-avanza-2021-mpv-murah-bertaburkan-banyak-fitur.png",
+    "hourRate": 30000,
+    "dayRate": 150000,
+    "monthRate": 4000000
+  }
+]
