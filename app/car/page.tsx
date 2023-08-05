@@ -9,15 +9,23 @@ import Navbar from "@/components/Navbar"
 import CarCard from "@/components/CarCard"
 
 const Car = () => {
+  const [isFetching, setIsFetching] = useState(true)
+  
   const dispatch = useDispatch()
   const cars = useSelector((state: RootState) => state.car.cars)
   
   useEffect(() => {
-    if (cars.length === 0) {
+    if (cars.length === 0 && isFetching) {
       getAllCars()
-        .then(res => dispatch({ type: 'car/setCars', payload: res }))
+        .then(res => {
+          dispatch({ type: 'car/setCars', payload: res })
+          setIsFetching(false)
+        })
+        .catch(err => {
+          setIsFetching(false)
+        })
     }
-  }, [cars])
+  })
   
   return (
     <div>
@@ -26,6 +34,16 @@ const Car = () => {
         {cars.map((car: Car, index: number) => (
           <CarCard key={index} {...car} />
         ))}
+        { !isFetching && cars.length === 0 && (
+          <div className="col-span-4 flex justify-center">
+            <p className="text-center">Belum ada mobil untuk disewakan.</p>
+          </div>
+        )}
+        {isFetching && (
+          <div className="col-span-4 flex justify-center">
+            <p className="text-center">Loading...</p>
+          </div>
+        )}
       </div>
     </div>
   )

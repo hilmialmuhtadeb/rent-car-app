@@ -5,6 +5,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { store } from './store'
 import { Provider } from 'react-redux'
+import { Toaster } from 'react-hot-toast'
+import Initializer from '@/components/Initializer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider store={store}>
+          <Initializer />
+          <div>
+            <Toaster />
+          </div>
           {children}
         </Provider>
       </body>

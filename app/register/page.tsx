@@ -4,6 +4,7 @@ import { registerUser } from "@/features/user/userApi"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { toast } from "react-hot-toast"
 
 const Register = () => {
   const [username, setUsername] = useState('')
@@ -17,24 +18,24 @@ const Register = () => {
   const router = useRouter()
 
   async function handleRegister() {
-    const res = await registerUser({
-      username,
-      email,
-      phoneNumber,
-      password,
-      city,
-      zip,
-      address
-    })
-    if (res.status === 200) {
-      alert('Berhasil mendaftar')
-      router.push('/login')
-    } else {
-      alert('Gagal mendaftar')
-    }
+      registerUser({
+        username,
+        email,
+        phoneNumber,
+        password,
+        city,
+        zip,
+        address
+      })
+      .then(res => {
+        toast.success('Akun berhasil didaftarkan')
+        router.push('/login')
+      })
+      .catch(err => {
+        toast.error(err.response.data.error)
+      })
   }
 
-  
   return (
     <div className="container mx-auto mt-8">
       <Link href="/">

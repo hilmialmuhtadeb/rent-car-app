@@ -6,6 +6,6 @@ type getAllCarsResponse = {
 }
 
 export async function getAllCars(): Promise<Car[]>  {
-  const response = await axios.get<getAllCarsResponse>('http://localhost:8080/api/cars');
+  const response = await axios.get<getAllCarsResponse>('http://localhost:8080/api/cars', { withCredentials: true });
   return response.data.cars;
 }
