@@ -32,6 +32,10 @@ export function getUserProfile() {
   return axios.get<{user: User}>('http://localhost:8080/api/users/profile', { withCredentials: true });
 }
 
+export function loginAdmin(user: LoginInput) {
+  return axios.post<loginResponse>('http://localhost:8080/api/admin/login', user);
+}
+
 export function storeTokenToLocalDB(token: string) {
   // bad practice, manual set cookie
   localStorage.setItem('token', token);
@@ -40,5 +44,15 @@ export function storeTokenToLocalDB(token: string) {
 
 export function removeTokenFromLocalDB() {
   localStorage.removeItem('token');
+  document.cookie = `Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+}
+
+export function storeAdminTokenToLocalDB(token: string) {
+  localStorage.setItem('adminToken', token);
+  document.cookie = `Authorization=${token}`;
+}
+
+export function removeAdminTokenFromLocalDB() {
+  localStorage.removeItem('adminToken');
   document.cookie = `Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
 }

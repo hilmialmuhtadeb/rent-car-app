@@ -34,6 +34,13 @@ export const authSlice = createSlice({
     },
     logout: (state) => {
       state.isLogin = false;
+      state.isAdmin = false;
+      state.authInformation = {
+        id: 0,
+        email: '',
+        username: '',
+        role: 0
+      }
     },
     setAuthInformation: (state, action: PayloadAction<AuthInformation>) => {
       state.authInformation = action.payload;

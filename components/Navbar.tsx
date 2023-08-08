@@ -2,9 +2,8 @@
 
 import { RootState } from "@/app/store"
 import { useSelector, useDispatch } from "react-redux"
-import Link from "next/link"
-import { useEffect } from "react"
 import { removeTokenFromLocalDB } from "@/features/user/userApi"
+import Link from "next/link"
 
 const Navbar = () => {
   const profile = useSelector((state: RootState) => state.user.profile)
@@ -18,10 +17,6 @@ const Navbar = () => {
     dispatch({ type: 'user/resetProfile' })
   }
 
-  useEffect(() => {
-    
-  }, [profile])
-  
   return (
     <nav className="py-4">
       <div className="container mx-auto flex justify-between items-center">

@@ -7,6 +7,7 @@ import { Car } from "@/types/Car"
 import { getAllCars } from "@/features/car/carApi"
 import Navbar from "@/components/Navbar"
 import CarCard from "@/components/CarCard"
+import Link from "next/link"
 
 const Car = () => {
   const [isFetching, setIsFetching] = useState(true)
@@ -25,14 +26,20 @@ const Car = () => {
           setIsFetching(false)
         })
     }
-  })
+
+    if (cars.length > 0 && isFetching) {
+      setIsFetching(false)
+    }
+  }, [cars, dispatch, isFetching])
   
   return (
     <div>
       <Navbar />
       <div className="container px-32 mx-auto py-8 grid grid-cols-4 gap-4">
         {cars.map((car: Car, index: number) => (
-          <CarCard key={index} {...car} />
+          <Link href={`/car/${car.id}`} key={index}>
+            <CarCard {...car} />
+          </Link>
         ))}
         { !isFetching && cars.length === 0 && (
           <div className="col-span-4 flex justify-center">

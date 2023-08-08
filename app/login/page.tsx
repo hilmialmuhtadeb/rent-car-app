@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { getUserProfile, loginUser, storeTokenToLocalDB } from "@/features/user/userApi"
 import { useRouter } from "next/navigation"
 import { toast } from "react-hot-toast"
@@ -45,6 +45,12 @@ const Login = () => {
         toast.error(err.response.data.error)
       })
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      router.push('/')
+    }
+  }, [])
 
   return (
     <div className="container mx-auto min-h-screen flex flex-col justify-center items-center">

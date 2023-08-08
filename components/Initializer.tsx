@@ -10,9 +10,15 @@ const Initializer = () => {
   
   useEffect(() => {
     const token = localStorage.getItem('token')
+    const adminToken = localStorage.getItem('adminToken')
     
     if (token) {
       dispatch({ type: 'auth/login' })
+    }
+
+    if (adminToken) {
+      dispatch({ type: 'auth/login' })
+      dispatch({ type: 'auth/setAdmin', payload: true })
     }
     
     if (token && profile.username === '') {
